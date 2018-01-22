@@ -5,14 +5,14 @@
 
       <el-form >
         <el-form-item :label-position="right" label="账户"  label-width="50px">
-          <el-input placeholder="" ></el-input>
+          <el-input v-model="LoginForm.account" placeholder="" ></el-input>
         </el-form-item>
 
         <el-form-item :label-position="right" label="密码" label-width="50px" >
-          <el-input placeholder=""></el-input>
+          <el-input v-model="LoginForm.password" placeholder=""></el-input>
         </el-form-item>
 
-        <el-button type="primary">登入</el-button>
+        <el-button type="primary" @click="submitForm" >登入</el-button>
       </el-form>
     </div>
 
@@ -22,7 +22,33 @@
 </template>
 
 <script>
+  import * as rootController from 'api/rootController'
 
+  export default {
+    data() {
+      return {
+        LoginForm:{
+          account: '',
+          password: ''
+        }
+      }
+    },
+    methods: {
+      submitForm(){
+        let self = this
+        rootController.login({
+            email: self.LoginForm.account,
+            password: self.LoginForm.password
+          }).then(() => {
+            self.$router.push({ path: '/' })
+          }).catch((e) => {
+            console.error(e)
+          })
+      }
+    }
+
+
+}
 
 </script>
 
