@@ -1,6 +1,6 @@
 <template>
-  <div class="hello">
-    <h1>首页</h1>
+  <div id="index">
+    <h1>welcome</h1>
 
   </div>
 </template>
