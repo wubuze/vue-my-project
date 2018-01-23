@@ -69,14 +69,15 @@
      height: 380px;
      margin-top: -190px;
      margin-left: -190px;
-     background-color: #fff;
-     border-radius: 10px;
+     
 
    }
   .form .el-form {
     padding: 50px;
     margin-top: 20px;
     border-radius: 10px;
+    background-color: #fff;
+    
 
   }
 

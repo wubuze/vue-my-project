@@ -12,14 +12,7 @@
         <el-option  value="1" label="选项1" > </el-option>
         <el-option  value="2" label="选项2" > </el-option>
       </el-select> 
-      <el-select v-model="value2" placeholder="请选择">
-        <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-        </el-option>
-      </el-select>
+     
       <el-input  placeholder="请输入姓名"></el-input>
       <el-button type="primary">搜索</el-button>
     </el-row>
@@ -38,16 +31,32 @@
         </el-table-column>
 
         <el-table-column 
-        prop="name" 
-        label="姓名" 
-        >
+          prop="name" 
+          label="姓名" 
+          align="center">
+        </el-table-column>
+        <el-table-column 
+          prop="gender" 
+          label="性别" 
+          align="center">
         </el-table-column>
 
         <el-table-column 
-        prop="qq" 
-        label="qq" 
-        >
+          prop="qq" 
+          label="qq" 
+          align="center">
         </el-table-column>
+        <el-table-column 
+          prop="activated" 
+          label="状态" 
+          align="center">
+        </el-table-column>
+        <el-table-column 
+          label="操作" 
+          align="center">
+
+        </el-table-column>
+
         
       </el-table>
     </el-row>
@@ -56,7 +65,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import * as userController from 'api/userController'
+  import * as userController from '@/api/userController.js'
 
   export default {
     data() {
@@ -70,6 +79,8 @@
         userGroup: '',
         users: [],
         name: '',
+        value: '',
+        value2: '',
         tableData: [
           {
             date: '2018-01-01',
@@ -81,22 +92,27 @@
             name: 'aaa',
             address: '福州'
           }
-        ]
+        ],
+        search: {
+          page: 1,
+          num_per_page: 10
+        }
       }
     },
     created() {
-      this.getUserList(this.state, this.userGroup, this.name)
-      userController.listUserGroup().then((data) => {
-        this.userGroups = data.roleDat
-      })
+      this.getUserList()
     },
     methods: {
-      async getUserList(state, userGroup, name) {
-        let self = this
-        await userController.listUser(1, 999, state, userGroup, name).then((users) => {
-          //self.users = self.format(users)
-          self.users = users
-
+        getUserList() {
+          let data = {
+          status: 1,
+          name: this.name,
+          page: this.search.page,
+          num_per_page: this.search.num_per_page
+        }
+        userController.userList(data).then((res) => {
+          this.users = res.users.data
+          console.log(res.users.data)
         })
       }
     }

@@ -1,11 +1,13 @@
 import request from '../config/request';
-import { UserModel } from '../models/user';
 
-export const listUser = (page, numPerPae, status, roleId, name) => {
-  return request(`users/show?page=${page}&num_per_pae=${numPerPae}&role_id=${roleId}&name=${name}&status=${status}`, 'get', null, true).then((data) => {
-    let userList = data.users.data.map((e) => {
-      return UserModel.create(e).attrs;
-    });
-    return userList;
+export const listPurchase = (query) => {
+  return request(`inventory/purchaseIn/show?status=${query.status}&&name=${query.name}&&num_per_page=${query.num_per_page}&&page=${query.page}`, 'get', null).then((data) => {
+    return data;
+  });
+};
+
+export const userList = (query) => {
+  return request(`users/show?status=${query.status}&&name=${query.name}&&num_per_page=${query.num_per_page}&&page=${query.page}`, 'get', null).then((data) => {
+    return data;
   });
 };
