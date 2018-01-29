@@ -22,7 +22,7 @@
 </template>
 
 <script>
-  import * as rootController from 'api/rootController'
+  import * as rootController from '@/api/rootController'
 
   export default {
     data() {

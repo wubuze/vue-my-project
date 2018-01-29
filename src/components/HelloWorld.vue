@@ -38,19 +38,28 @@
    
     
 
+      <a href="javascript:;" @click="$store.state.show = true">点击</a>
+      <t-dialog :show.sync="$store.state.show"></t-dialog>
+
 
   </div>
 </template>
 
 <script>
-export default {
-  name: 'HelloWorld',
-  data () {
-    return {
-      msg: 'HelloWorld page'
+    import dialog from './dialog.vue'
+
+    export default {
+      name: 'HelloWorld',
+      data () {
+        return {
+          msg: 'HelloWorld page',
+//          show: false
+        }
+      },
+      components: {
+        't-dialog': dialog
+      }
     }
-  }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
