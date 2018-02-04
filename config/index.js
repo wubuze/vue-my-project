@@ -13,7 +13,7 @@ module.exports = {
     //proxyTable: {},
     proxyTable: {
       '/api': {
-        target: 'http://sd.9peak.net/',
+        target: 'http://tp5.wbzz.com/',
         changeOrigin: true
       }
     },

@@ -1,5 +1,5 @@
 <template>
-  <div id="hello">
+  <div id="index">
     <el-row>
       <el-col :span="24">
         <div class="header">
@@ -34,30 +34,34 @@
             <router-view></router-view>
       </el-col>
     </el-row>
-    
-   
-    
-
-      <a href="javascript:;" @click="$store.state.show = true">点击</a>
-      <t-dialog :show.sync="$store.state.show"></t-dialog>
 
 
   </div>
 </template>
 
 <script>
-    import dialog from './dialog.vue'
 
     export default {
-      name: 'HelloWorld',
+      name: 'index',
       data () {
         return {
-          msg: 'HelloWorld page',
-//          show: false
+          menu: [
+            {
+              title: "基础设置",
+              route: "",
+              subMenu: [
+                {
+                  title: "登入",
+                  route: "/login",
+                }
+              ]
+            },
+            {
+              title: "用户管理",
+              route: "/user-center"
+            }
+          ]
         }
-      },
-      components: {
-        't-dialog': dialog
       }
     }
 </script>

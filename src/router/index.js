@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Login from '@/components/Login'
-import Home from '@/components/Home'
-import UserCenter from '@/components/Users/center'
-import UserManage from '@/components/Users/manage'
+import index from '@/components/index'
+import login from '@/components/login'
+import home from '@/components/home'
+import userCenter from '@/components/Users/center'
+import userManage from '@/components/Users/manage'
 
 Vue.use(Router);
 
@@ -12,14 +12,14 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: HelloWorld,
+      component: index,
       children : [
-        { path: '', component: Home },
-        { path: '/user-center', component: UserCenter },
-        { path: '/user-manage', component: UserManage }
+        { path: '', component: home },
+        { path: '/user-center', component: userCenter },
+        { path: '/user-manage', component: userManage }
       ]
     },
-    { path: '/login', name: 'login', component: Login }
+    { path: '/login', name: 'login', component: login }
 
   ]
 })
