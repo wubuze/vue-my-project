@@ -1,7 +1,15 @@
 import axios from 'axios'
 import { Notification } from 'element-ui'
 
-axios.defaults.baseURL = '/api'
+if (process.env.NODE_ENV === 'production') {
+  axios.defaults.baseURL = '/admin/'
+} else {
+axios.defaults.baseURL = 'http://blog55.martin.com/admin/'  
+// axios.defaults.baseURL = 'http://sd-amazon.martin.net/'  
+}
+
+console.log(process.env.NODE_ENV)
+
 axios.defaults.headers.post['X-Request-With'] = 'XMLHttpRequest'
 
 let baseUrl = ''

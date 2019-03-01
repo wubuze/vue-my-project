@@ -12,8 +12,8 @@ module.exports = {
     assetsPublicPath: '/',
     //proxyTable: {},
     proxyTable: {
-      '/api': {
-        target: 'http://tp5.wbzz.com/',
+      '/admin': {
+        target: 'http://blog55.martin.com/',
         changeOrigin: true
       }
     },

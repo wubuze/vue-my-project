@@ -4,11 +4,11 @@
     <div class="form">
 
       <el-form >
-        <el-form-item :label-position="right" label="账户"  label-width="50px">
+        <el-form-item  label="账户"  label-width="50px">
           <el-input v-model="LoginForm.account" placeholder="" ></el-input>
         </el-form-item>
 
-        <el-form-item :label-position="right" label="密码" label-width="50px" >
+        <el-form-item  label="密码" label-width="50px" >
           <el-input v-model="LoginForm.password" placeholder=""></el-input>
         </el-form-item>
 
@@ -39,7 +39,9 @@
         rootController.login({
             email: self.LoginForm.account,
             password: self.LoginForm.password
-          }).then(() => {
+          }).then((res) => {
+            console.log(res)
+            return false;
             self.$router.push({ path: '/' })
           }).catch((e) => {
             console.error(e)
